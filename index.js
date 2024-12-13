@@ -55,4 +55,38 @@ function urlify(str, trueLength) {
   let trueLength = 13;
 //   console.log(urlify(str, trueLength));
 
+// Check if the string is a permutation of a palendrome.
 
+function isPermutationOfPalindrome(phrase) { debugger
+    let countOdd = 0;
+    const table = new Array(26).fill(0); // Array to store letter frequencies (26 letters in the alphabet)
+    
+    for (let char of phrase) {
+        const x = getCharNumber(char);
+        if (x !== -1) {
+            table[x]++;
+            if (table[x] % 2 === 1) {
+                countOdd++;
+            } else {
+                countOdd--;
+            }
+        }
+    }
+
+    return countOdd <= 1;
+}
+
+function getCharNumber(c) {
+    const charCodeA = 'a'.charCodeAt(0);
+    const charCodeZ = 'z'.charCodeAt(0);
+    const charCode = c.toLowerCase().charCodeAt(0);
+
+    if (charCode >= charCodeA && charCode <= charCodeZ) {
+        return charCode - charCodeA; // Map 'a' to 0, 'b' to 1, ..., 'z' to 25
+    }
+    return -1; // Non-letter characters
+}
+
+// Example usage
+console.log(isPermutationOfPalindrome("Tact Ca")); // Output: true (because "Tact Coa" can be rearranged into "tacocat")
+console.log(isPermutationOfPalindrome("hello"));    // Output: false
