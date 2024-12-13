@@ -138,7 +138,37 @@ function oneEditAway(first, second) { debugger
   }
   
   // Example usage
-  console.log(oneEditAway("pale", "ple")); // true
-  console.log(oneEditAway("pales", "pale")); // true
-  console.log(oneEditAway("pale", "bale")); // true
-  console.log(oneEditAway("pale", "bake")); // false
+//   console.log(oneEditAway("pale", "ple")); // true
+//   console.log(oneEditAway("pales", "pale")); // true
+//   console.log(oneEditAway("pale", "bale")); // true
+//   console.log(oneEditAway("pale", "bake")); // false
+
+
+function stringCompression(str) { debugger
+    if (!str || str.length === 0) return str; // Handle empty string
+  
+    let compressedArray = []; // Use array to build the compressed string
+    let countConsecutive = 0;
+  
+    for (let i = 0; i < str.length; i++) {
+      countConsecutive++;
+  
+      // If the next character is different than the current, append to the array
+      if (i + 1 >= str.length || str[i] !== str[i + 1]) {
+        compressedArray.push(str[i]); // Append the character
+        compressedArray.push(countConsecutive); // Append the count
+        countConsecutive = 0; // Reset the counter
+      }
+    }
+  
+    const compressedString = compressedArray.join(""); // Convert array to string
+  
+    // Return the original string if compressed string is not shorter
+    return compressedString.length < str.length ? compressedString : str;
+  }
+  
+  // Example usage:
+  console.log(stringCompression("aabcccccaaa")); // Outputs: "a2b1c5a3"
+  console.log(stringCompression("abcdef")); // Outputs: "abcdef"
+  console.log(stringCompression("")); // Outputs: ""
+  console.log(stringCompression("aa")); // Outputs: "aa"
