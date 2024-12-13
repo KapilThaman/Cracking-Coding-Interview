@@ -36,4 +36,23 @@ function CheckbtiwiseValues(Str1) {
   }
   return checker;
 }
-console.log(CheckPermutation("god", "dogy"));
+// console.log(CheckPermutation("god", "dogy"));
+
+function urlify(str, trueLength) {
+    let result = '';
+    
+    for (let i = 0; i < trueLength; i++) {
+      if (str[i] === ' ') {
+        result += '%20'; 
+      } else {
+        result += str[i]; 
+      }
+    }
+    return result; 
+  }
+  // Test the function
+  let str = "Mr John Smith    ";
+  let trueLength = 13;
+//   console.log(urlify(str, trueLength));
+
+
