@@ -57,7 +57,7 @@ function urlify(str, trueLength) {
 
 // Check if the string is a permutation of a palendrome.
 
-function isPermutationOfPalindrome(phrase) { debugger
+function isPermutationOfPalindrome(phrase) { 
     let countOdd = 0;
     const table = new Array(26).fill(0); // Array to store letter frequencies (26 letters in the alphabet)
     
@@ -88,5 +88,57 @@ function getCharNumber(c) {
 }
 
 // Example usage
-console.log(isPermutationOfPalindrome("Tact Ca")); // Output: true (because "Tact Coa" can be rearranged into "tacocat")
-console.log(isPermutationOfPalindrome("hello"));    // Output: false
+// console.log(isPermutationOfPalindrome("Tact ooCoa")); // Output: true (because "Tact Coa" can be rearranged into "tacocat")
+// console.log(isPermutationOfPalindrome("hello"));    // Output: false
+
+// One Edit Away
+
+function oneEditAway(first, second) { debugger
+    if (first.length === second.length) {
+      return oneEditReplace(first, second);
+    } else if (first.length + 1 === second.length) {
+      return oneEditInsert(first, second);
+    } else if (first.length - 1 === second.length) {
+      return oneEditInsert(second, first);
+    }
+    return false;
+  }
+  
+  function oneEditReplace(s1, s2) { debugger
+    
+    let foundDifference = false;
+    for (let i = 0; i < s1.length; i++) {
+      if (s1[i] !== s2[i]) {
+        if (foundDifference) {
+          return false;
+        }
+        foundDifference = true;
+      }
+    }
+    return true;
+  }
+  
+  function oneEditInsert(s1, s2) { debugger
+    let index1 = 0;
+    let index2 = 0;
+  
+    while (index1 < s1.length && index2 < s2.length) {
+      if (s1[index1] !== s2[index2]) {
+        if (index1 !== index2) {
+          return false;
+        }
+        index2++;
+      } else {
+        index1++;
+        index2++;
+      }
+    }
+  
+    return true;
+  }
+  
+  // Example usage
+  console.log(oneEditAway("pale", "ple")); // true
+  console.log(oneEditAway("pales", "pale")); // true
+  console.log(oneEditAway("pale", "bale")); // true
+  console.log(oneEditAway("pale", "bake")); // false
