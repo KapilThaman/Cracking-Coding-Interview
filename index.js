@@ -181,6 +181,28 @@ function isRotation(s1, s2) {
 }
 
 // Example usage:
-console.log(isRotation("waterbottle", "erbottlewat")); // Output: true
-console.log(isRotation("hello", "llohe")); // Output: true
-console.log(isRotation("hello", "world")); // Output: false
+// console.log(isRotation("waterbottle", "erbottlewat")); // Output: true
+// console.log(isRotation("hello", "llohe")); // Output: true
+// console.log(isRotation("hello", "world")); // Output: false
+
+//Rotate In place
+
+function rotateInPlace(str, n) {
+    let arr = str.split('');
+    n = n % arr.length; // Handle cases where n is greater than the string length
+    reverse(arr, 0, arr.length - 1);
+    reverse(arr, 0, n - 1);
+    reverse(arr, n, arr.length - 1);
+    return arr.join('');
+}
+
+function reverse(arr, start, end) {
+    while (start < end) {
+        [arr[start], arr[end]] = [arr[end], arr[start]];
+        start++;
+        end--;
+    }
+}
+
+// Example usage:
+console.log(rotateInPlace("abcdef", 2)); // Output: "efabcd"
