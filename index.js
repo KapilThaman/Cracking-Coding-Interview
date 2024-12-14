@@ -1,11 +1,12 @@
 // Checking if the string is unique...
 
-function CheckUnique(Str) {
+function CheckUnique(Str) { 
   let checker = 0;
 
   for (let i = 0; i < Str.length; i++) {
     let positionOfChar = Str.charCodeAt(i) - "a".charCodeAt(0);
-    if ((checker & (1 << positionOfChar)) > 0) {
+    if ((checker & (1 << positionOfChar)) > 0) {  //checker & 1<<positionCHar means shift left 1 in checker 
+        console.log(1 << positionOfChar)
       return false;
     }
 
@@ -14,7 +15,7 @@ function CheckUnique(Str) {
   return true;
 }
 
-// console.log(CheckUnique("Kalk"));
+// console.log(CheckUnique("kalk"));
 
 /* Check if One string is the permutation of the other: 
 For example god == dog , we will do it using bitwise operator again. */
@@ -168,7 +169,18 @@ function stringCompression(str) { debugger
   }
   
   // Example usage:
-  console.log(stringCompression("aabcccccaaa")); // Outputs: "a2b1c5a3"
-  console.log(stringCompression("abcdef")); // Outputs: "abcdef"
-  console.log(stringCompression("")); // Outputs: ""
-  console.log(stringCompression("aa")); // Outputs: "aa"
+//   console.log(stringCompression("aabcccccaaa")); // Outputs: "a2b1c5a3"
+//   console.log(stringCompression("abcdef")); // Outputs: "abcdef"
+//   console.log(stringCompression("")); // Outputs: ""
+//   console.log(stringCompression("aa")); // Outputs: "aa"
+
+function isRotation(s1, s2) {
+    if (s1.length !== s2.length) return false;
+    const combined = s1 + s1; // Concatenate s1 with itself
+    return combined.includes(s2); // Check if s2 is a substring of the combined string
+}
+
+// Example usage:
+console.log(isRotation("waterbottle", "erbottlewat")); // Output: true
+console.log(isRotation("hello", "llohe")); // Output: true
+console.log(isRotation("hello", "world")); // Output: false
