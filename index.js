@@ -205,4 +205,4 @@ function reverse(arr, start, end) {
 }
 
 // Example usage:
-console.log(rotateInPlace("abcdef", 2)); // Output: "efabcd"
+console.log(rotateInPlace("abcdef", 2)); // Output: "efabcd" also you can do it using rotaate reverse function
