@@ -61,7 +61,7 @@ function urlify(str, trueLength) {
 function isPermutationOfPalindrome(phrase) { 
     let countOdd = 0;
     const table = new Array(26).fill(0); // Array to store letter frequencies (26 letters in the alphabet)
-    
+    // There should be just on element or no element which comes odd times.
     for (let char of phrase) {
         const x = getCharNumber(char);
         if (x !== -1) {
